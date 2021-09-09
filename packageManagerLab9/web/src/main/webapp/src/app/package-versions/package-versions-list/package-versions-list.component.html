@@ -1,0 +1,32 @@
+<div *ngIf="selectedPkgVersion">
+  <h2>
+    version {{selectedPkgVersion.versionNumber}} was selected
+  </h2>
+  <button (click)="delete()">Remove</button>
+</div>
+
+<h3>Package-versions</h3>
+
+<table id="dataTable">
+  <tr>
+    <th>Version number</th>
+    <th>Starting date</th>
+  </tr>
+  <tr *ngFor="let packageVersion of packageVersions"
+      [class.selected]="packageVersion === selectedPkgVersion"
+      (click)="onSelect(packageVersion)">
+    <td>{{packageVersion.versionNumber}}</td>
+    <td>{{packageVersion.startingDate}}</td>
+  </tr>
+</table>
+
+
+<div class="settings">
+  <label>Version number: </label>
+  <input placeholder="introduce version number" #versionNumber >
+  <label>Starting date: </label>
+  <input  placeholder="introduce starting date" #startingDate>
+</div>
+
+<button (click)="save(versionNumber.value, startingDate.value)">Save</button>
+

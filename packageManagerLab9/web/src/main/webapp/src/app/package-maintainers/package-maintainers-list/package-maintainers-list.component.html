@@ -1,0 +1,35 @@
+<div *ngIf="selectedPkgMaintainer">
+  <h2>
+    link to package {{selectedPkgMaintainer.packageName}} was selected
+  </h2>
+  <button (click)="delete()">Remove</button>
+  <button (click)="update(importanceUpdate.value)">Update</button>
+  <label>New importance: </label>
+  <input placeholder="introduce new importance" #importanceUpdate >
+</div>
+
+<h3>Package-maintainers</h3>
+
+<table id="dataTable">
+  <tr>
+    <th>Package name</th>
+    <th>Importance</th>
+  </tr>
+  <tr *ngFor="let packageMaintainer of packageMaintainers"
+      [class.selected]="packageMaintainer === selectedPkgMaintainer"
+      (click)="onSelect(packageMaintainer)">
+    <td>{{packageMaintainer.packageName}}</td>
+    <td>{{packageMaintainer.importance}}</td>
+  </tr>
+</table>
+
+
+<div class="settings">
+  <label>Package name: </label>
+  <input placeholder="introduce package name" #packageName >
+  <label>Importance: </label>
+  <input  placeholder="introduce importance" #importance>
+</div>
+
+<button (click)="save(packageName.value, importance.value)">Save</button>
+

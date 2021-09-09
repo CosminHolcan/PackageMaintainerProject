@@ -1,0 +1,15 @@
+<h2>New maintainer</h2>
+<div class="settings">
+  <label>User name: </label>
+  <input placeholder="introduce user name" #userName>
+  <label>Full name: </label>
+  <input  placeholder="introduce full name" #fullName>
+  <label>Email: </label>
+  <input  placeholder="introduce email" #email>
+  <label>City: </label>
+  <input  placeholder="introduce city" #city>
+  <label>Street: </label>
+  <input  placeholder="introduce street" #street>
+</div>
+<button (click)="goBack()">Back</button>
+<button (click)="save(userName.value, fullName.value, email.value, city.value, street.value)">Save</button>

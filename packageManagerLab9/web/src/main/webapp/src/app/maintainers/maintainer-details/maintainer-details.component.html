@@ -1,0 +1,15 @@
+<div *ngIf="maintainer">
+  <h2>Maintainer {{maintainer.userName}} details</h2>
+  <div class="settings">
+    <label>User name: </label>
+    <input [(ngModel)]="maintainer.userName" placeholder="introduce user name">
+    <label>Full name: </label>
+    <input [(ngModel)]="maintainer.fullName" placeholder="introduce full name">
+    <label>Email: </label>
+    <input [(ngModel)]="maintainer.email" placeholder="introduce email">
+  </div>
+  <button (click)="goBack()">Back</button>
+  <button (click)="save()">Save</button>
+</div>
+
+<app-package-maintainers-list></app-package-maintainers-list>

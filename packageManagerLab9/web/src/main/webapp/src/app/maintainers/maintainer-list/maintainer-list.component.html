@@ -1,0 +1,62 @@
+<div *ngIf="selectedMaintainer">
+  <h2>
+    {{selectedMaintainer.userName}} was selected
+  </h2>
+  <button (click)="gotoDetail()">Details</button>
+  <button (click)="delete()">Remove</button>
+</div>
+
+<h2>Maintainers</h2>
+
+<h3>Filter</h3>
+<form>
+  <label for="field">Choose a field : </label>
+  <select id="field" #field>
+    <option value="userName">user name</option>
+    <option value="fullName">full name</option>
+    <option value="email">email</option>
+  </select>
+  <input placeholder="input to search for" #inputFind>
+  <input type="submit" value="Find" (click)="getFilteredMaintainers(field.options[field.selectedIndex].value, inputFind.value)">
+</form>
+
+<h3>Sort</h3>
+<form>
+  <label for="fieldSort">Choose a field : </label>
+  <select id="fieldSort" #fieldSort>
+    <option value="userName">user name</option>
+    <option value="fullName">full name</option>
+    <option value="email">email</option>
+  </select>
+  <label for="orderSort"> in order : </label>
+  <select id="orderSort" #orderSort>
+    <option value="ascending">ascending</option>
+    <option value="descending">descending</option>
+  </select>
+  <input type="submit" value="Sort" (click)="sortMaintainers(fieldSort.options[fieldSort.selectedIndex].value, orderSort.options[orderSort.selectedIndex].value)">
+</form>
+
+
+<button (click)="getMaintainers()">Get all maintainers</button>
+<button (click)="goToAdd()">Add new maintainer</button>
+
+
+<table id="dataTable">
+  <tr>
+    <th>User Name</th>
+    <th>Full Name</th>
+    <th>Email</th>
+    <th>City</th>
+    <th>Street</th>
+  </tr>
+  <tr *ngFor="let maintainer of maintainers"
+      [class.selected]="maintainer === selectedMaintainer"
+      (click)="onSelect(maintainer)">
+    <td>{{maintainer.userName}}</td>
+    <td>{{maintainer.fullName}}</td>
+    <td>{{maintainer.email}}</td>
+    <td>{{maintainer.address.city}}</td>
+    <td>{{maintainer.address.street}}</td>
+  </tr>
+</table>
+

@@ -1,0 +1,13 @@
+<h2>New package</h2>
+<div class="settings">
+  <label>Name: </label>
+  <input placeholder="introduce name" #name>
+  <label>Description: </label>
+  <input  placeholder="introduce description" #description>
+  <label>Source repo: </label>
+  <input  placeholder="introduce source repo" #sourceRepo>
+  <label>License: </label>
+  <input  placeholder="introduce license" #license>
+</div>
+<button (click)="goBack()">Back</button>
+<button (click)="save(name.value, description.value, sourceRepo.value, license.value)">Save</button>

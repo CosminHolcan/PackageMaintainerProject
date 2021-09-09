@@ -1,0 +1,61 @@
+<div *ngIf="selectedPackage">
+  <h2>
+    {{selectedPackage.name}} was selected
+  </h2>
+  <button (click)="gotoDetail()">Details</button>
+  <button (click)="delete()">Remove</button>
+</div>
+
+<h2>Packages</h2>
+
+<h3>Filter</h3>
+<form>
+  <label for="field">Choose a field : </label>
+  <select id="field" #field>
+    <option value="name">name</option>
+    <option value="description">description</option>
+    <option value="sourceRepo">source repo</option>
+    <option value="license">license</option>
+  </select>
+  <input placeholder="input to search for" #inputFind>
+  <input type="submit" value="Find" (click)="getFilteredPackages(field.options[field.selectedIndex].value, inputFind.value)">
+</form>
+
+<h3>Sort</h3>
+<form>
+  <label for="fieldSort">Choose a field : </label>
+  <select id="fieldSort" #fieldSort>
+    <option value="name">name</option>
+    <option value="description">description</option>
+    <option value="sourceRepo">source repo</option>
+    <option value="license">license</option>
+  </select>
+  <label for="orderSort"> in order : </label>
+  <select id="orderSort" #orderSort>
+    <option value="ascending">ascending</option>
+    <option value="descending">descending</option>
+  </select>
+  <input type="submit" value="Sort" (click)="sortPackages(fieldSort.options[fieldSort.selectedIndex].value, orderSort.options[orderSort.selectedIndex].value)">
+</form>
+
+<button (click)="getPackages()">Get all packages</button>
+<button (click)="goToAdd()">Add new package</button>
+
+
+<table id="dataTable">
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Source repo</th>
+    <th>License</th>
+  </tr>
+  <tr *ngFor="let package of packages"
+      [class.selected]="package === selectedPackage"
+      (click)="onSelect(package)">
+    <td>{{package.name}}</td>
+    <td>{{package.description}}</td>
+    <td>{{package.sourceRepo}}</td>
+    <td>{{package.license}}</td>
+  </tr>
+</table>
+

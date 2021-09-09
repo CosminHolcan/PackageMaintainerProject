@@ -1,0 +1,17 @@
+<dataset>
+    <maintainer id="1" userName="cosmin" fullName="full name 1" email="us1@gmail.com"  />
+    <maintainer id="2" userName="user_name_2" fullName="full name 2" email="us2@yahoo.com"  />
+    <maintainer id="3" userName="user_name_3" fullName="full name 3" email="us3@gmail.com"  />
+    <maintainer id="4" userName="user_name_4" fullName="full name 4" email="us4@gmail.com"  />
+
+    <apackage id="5" name="package1" description="wonderful pack 1" sourceRepo="https://source1.com" license="RL-86" />
+    <apackage id="6" name="package2" description="wonderful pack 2" sourceRepo="https://source2.com" license="RL-86" />
+    <apackage id="7" name="package3" description="this is pack3" sourceRepo="https://google.com" license="RL-86" />
+
+    <package_maintainer maintainer_id="1" package_id="5" importance="7" />
+    <package_maintainer maintainer_id="1" package_id="6" importance="7" />
+
+
+
+
+</dataset>
